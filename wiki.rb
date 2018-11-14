@@ -10,10 +10,8 @@ get "/" do    # => Root path
   erb :welcome
 end
 
-get "/test" do
-  erb :test
-end
-
 get "/:title" do
-  page_content(params[:title])
+  @title = params[:title]
+  @content = page_content(@title)
+  erb :show
 end
