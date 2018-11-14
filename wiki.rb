@@ -27,7 +27,13 @@ get "/:title" do
   erb :show
 end
 
+get "/:title/edit" do
+  @title = params[:title]
+  @content = page_content(@title)
+  erb :edit
+end
+
 post "/create" do
   save_content(params[:title], params[:content])
-  redirect URI.escape("/#{params[:title]}")     # => URI.escape removes spaces from title. 
+  redirect URI.escape("/#{params[:title]}")     # => URI.escape removes spaces from title.
 end
