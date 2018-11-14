@@ -6,6 +6,12 @@ rescue Errno::ENOENT
   return nil
 end
 
+def save_content(title, content)   # => Creates a new file in the pages folder for each title/content pair passed in
+  File.open("pages/#{title}.txt", "w") do |file|
+    file.print(content)
+  end
+end
+
 get "/" do    # => Root path
   erb :welcome
 end
